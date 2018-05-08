@@ -1,12 +1,11 @@
 #!usr/bin/env python
 # -*- coding utf-8 -*-
-import tweepy, time, sys
-import random
+import tweepy, time, sys, random
+from random import uniform
 
 argfile = str(sys.argv[1])
 
-#twitter info
-from secrets import *
+from secrets import * #secrets.py is the file with your credentials
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
@@ -16,5 +15,8 @@ f=filename.readlines()
 filename.close()
 
 for line in f:
-    api.update_status(line)
-    time.sleep(30) #tweets x seconds (4h = 14400s) [1h = 3600s]
+    try:
+        api.update_status(random.choice(list(open(argfile))))
+        time.sleep(uniform(7200,2100)) #tweets every [7200, 21600]
+    except tweepy.error.TweepError:
+        pass

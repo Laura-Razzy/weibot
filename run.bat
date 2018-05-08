@@ -1,1 +1,1 @@
-python bot.py lines.txt
+python bot.py tweets.txt
