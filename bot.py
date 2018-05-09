@@ -1,6 +1,7 @@
 #!usr/bin/env python
 # -*- coding utf-8 -*-
-import tweepy, time, sys, random
+import tweepy
+import time, sys, random
 from random import uniform
 
 argfile = str(sys.argv[1])
@@ -15,8 +16,9 @@ f=filename.readlines()
 filename.close()
 
 for line in f:
-    try:
-        api.update_status(random.choice(list(open(argfile))))
-        time.sleep(uniform(7200,2100)) #tweets every [7200, 21600]
-    except tweepy.error.TweepError:
-        pass
+    while True:
+        try:
+            api.update_status(random.choice(list(open(argfile))))
+            time.sleep(uniform(7200, 21600)) #tweets every [7200, 21600]
+        except tweepy.error.TweepError:
+            pass
