@@ -1,9 +1,0 @@
-@_raznet This is a test
-@_raznet Obligatory Hello World tweet
-@_raznet this tweet will be deleted
-@_raznet I am just a dumb bot
-@_raznet 1
-@_raznet 2
-@_raznet 3
-@_raznet 4
-@_raznet 5
